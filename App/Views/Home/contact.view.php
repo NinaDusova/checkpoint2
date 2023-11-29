@@ -7,9 +7,10 @@
 
 <div class="row">
     <div class="col">
-        <h3>Fakulta riadenia a informatiky</h3>
-        <strong>Adresa</strong>: Univerzitná 8215/1, 010 26 Žilina<br>
-        <strong>Tel. číslo</strong>: +421/41 513 4121<br>
+        <h3>PINK ESCAPE ROOM</h3>
+        <strong>Mail</strong>: pink.room.info@gmail.com<br>
+        <strong>Adresa</strong>: PinkRoom, Null, BlackHole<br>
+        <strong>Tel. číslo</strong>: +421 955 453 521<br>
 
         <strong>GPS</strong>: 49°12'6,4"N 18°45'42,6"E
     </div>
