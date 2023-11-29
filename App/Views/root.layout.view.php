@@ -15,9 +15,9 @@
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="public/css/style.main.css">
+    <link rel="stylesheet" href="/public/css/style.main.css">
    <!-- <link rel="stylesheet" href="public/css/styl.css"> -->
-    <script src="public/js/script.js"></script>
+    <script src="/public/js/script.js"></script>
     <!--/head>
 <body>
 <nav class="navbar navbar-expand-sm bg-light">
@@ -73,7 +73,7 @@
                 </li>
             </ul>
             <a class="navbar-brand" href="#">
-                <img src="img/logo.webp" class="logo" alt="Bootstrap">
+                <img src="/public/images/logo.webp" class="logo" alt="Bootstrap">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -105,7 +105,7 @@
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="img/main/front2.jpg" class="d-block w-100" alt="...">
+            <img src="/public/images/main/front2.jpg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
                 <h5>PINK ESCAPE ROOM</h5>
                 <button class="button-pink">ZISTI VIAC</button>
@@ -118,7 +118,7 @@
 
 <div class="home-section">
     <div class="home-container">
-        <div class="rectangle"><img src="img/main/first.jpg" alt=""></div>
+        <div class="rectangle"><img src="/public/images/main/first.jpg" alt=""></div>
         <div class="rectangle">
             <h6>Na čo sa môžeš tešiť ?</h6>
             <h2>Na únik máte 60 minút!</h2>
@@ -139,7 +139,7 @@
 <div class="icon-holder">
     <div class="feature-col" style="width: 300px; height: 300px;">
         <div class="feature-icon bg-primary bg-gradient" >
-            <img src="img/main/plague.png" alt="">
+            <img src="/public/images/main/plague.png" alt="">
         </div>
         <h4>Plague</h4>
         <h2>Udalosť sa bude konať v slovenčine/češtine</h2>
@@ -150,7 +150,7 @@
     </div>
     <div class="feature-col" style="width: 300px; height: 300px;">
         <div class="feature-icon bg-primary bg-gradient">
-            <img src="img/main/cake.png" alt="">
+            <img src="/public/images/main/cake.png" alt="">
         </div>
         <h4>Koláčová smrť</h4>
         <h2>Kapacita je obmedzená a preto ťa prosíme, bezplatne sa registruj čo najskôr</h2>
@@ -161,7 +161,7 @@
     </div>
     <div class="feature-col" style="width: 300px; height: 300px;">
         <div class="feature-icon bg-primary bg-gradient">
-            <img src="img/main/cat.png" alt="">
+            <img src="/public/images/main/cat.png" alt="">
         </div>
         <h4>Vražda Hello Kitty</h4>
         <h2>Budeš potrebovať dobrú náladu, pripojenie na internet a počítač</h2>
@@ -177,10 +177,10 @@
 <!-- photogallery -------------------------------------------------->
 <h3 class="pb-2 border-bottom bottom-title">FOTO galéria</h3>
 <div class="gallery">
-    <img src="img/main/room3.jpg" alt="">
-    <img src="img/main/room1.jpg" alt="">
-    <img src="img/main/room2.png" alt="">
-    <img src="img/main/pink-room.jpg" alt="">
+    <img src="/public/images/main/room3.jpg" alt="">
+    <img src="/public/images/main/room1.jpg" alt="">
+    <img src="/public/images/main/room2.png" alt="">
+    <img src="/public/images/main/pink-room.jpg" alt="">
 </div>
 <!-- photogallery -------------------------------------------------->
 
@@ -189,7 +189,7 @@
     <div class="long-rectangle">
         <div class="small-rectangle">
             <a class="navbar-brand" href="#">
-                <img src="img/logo.webp" class="logo" alt="Bootstrap">
+                <img src="/public/images/main/logo.webp" class="logo" alt="Bootstrap">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
