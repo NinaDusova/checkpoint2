@@ -1,0 +1,181 @@
+.header {
+    background-color: darksalmon;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+}
+
+.logo {
+    width: 100px;
+}
+
+h5 {
+    font-size: 80px;
+    color: #FEDCD5;
+    -webkit-text-stroke: 2px black;
+}
+
+.button-pink {
+    border: none;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: hotpink;
+    font-size: 20px;
+    width: 200px;
+    height: 50px;
+}
+
+p {
+    font-size: 50px;
+    color: black;
+    -webkit-text-stroke: 1px white;
+}
+
+.navbar {
+    background-color: darksalmon;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+.big-pic {
+    max-width: 100%;
+    margin: 0 auto;
+    opacity: 80%;
+}
+
+body {
+    background-color: #FEDCD5;
+}
+
+.home-section {
+    padding-top: 5%;
+    text-align: center;
+}
+
+.rectangle img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.container {
+    text-align: center;
+}
+
+
+.rectangle {
+    width: 460px;
+    height: 600px;
+    background-color: hotpink;
+    display: inline-block;
+    margin: 0 auto 10px;
+    vertical-align: center;
+    border-radius: 10px;
+}
+
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 800px;
+    width: 100%;
+}
+
+h6 {
+    color: #520B41;
+    font-weight: bold;
+    text-decoration: underline;
+    padding: 4%;
+    font-size: 35px;
+    text-align: left;
+}
+
+h2 {
+    padding: 4%;
+    font-size: 20px;
+    text-align: justify;
+}
+
+h3 {
+    padding: 4%;
+    font-size: 25px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.feature-icon {
+    border-radius: 10px;
+    height: 70px;
+    width: 70px;
+    display: flex;
+    margin: 0 auto;
+}
+
+h4 {
+    padding: 2%;
+    text-align: center;
+}
+
+.box {
+    display: flex;
+    margin: 0 auto;
+}
+
+.icon-holder {
+    width: 100%;
+    text-align: center;
+    background-color: pink;
+}
+.icon-link {
+    text-decoration-color: hotpink;
+    color: hotpink;
+}
+
+.feature-col {
+    display: inline-block;
+    width: 300px;
+    height: 300px;
+    margin-right: 20px;
+}
+
+.bottom-title {
+    text-align: center;
+}
+
+.gallery {
+    background-color: hotpink;
+}
+
+.gallery img {
+    border-radius: 5%;
+}
+
+.bottom {
+    text-align: center;
+}
+
+.bottom-link {
+    text-align: left;
+    padding-left: 10px;
+}
+
+.long-rectangle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: pink;
+    height: 350px;
+    width: 100%;
+}
+
+.small-rectangle {
+    padding-top: 2%;
+    width: 300px;
+    height: 270px;
+    background-color: pink;
+    display: inline-block;
+    margin: 0 10px;
+}
