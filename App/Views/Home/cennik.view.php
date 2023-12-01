@@ -1,7 +1,7 @@
 <!--price list -------------------------------------------------->
 <div class="price-section">
     <div class="price-list">
-        <div class="rectangle">
+        <div class="cennik rectangle">
             <h4>Plague</h4>
             <div class="small-rectangle">
                 <img src="/public/images/cennik/plague.jpg" alt="">
@@ -27,7 +27,7 @@
             </div>
         </div>
 
-        <div class="rectangle">
+        <div class="cennik rectangle">
             <h4>Cake</h4>
             <div class="small-rectangle">
                 <img src="/public/images/cennik/cake.jpg" alt="">
@@ -55,7 +55,7 @@
                 </a>
             </div>
         </div>
-        <div class="rectangle">
+        <div class="cennik rectangle">
             <h4>Hello Kitty murder</h4>
             <div class="small-rectangle">
                 <img src="/public/images/cennik/hello-kitty.png" alt="">
