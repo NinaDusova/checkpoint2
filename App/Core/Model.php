@@ -29,7 +29,7 @@ abstract class Model implements \JsonSerializable
      * @return static[]
      * @throws \Exception
      */
-    public static function getAll(
+    public static function /*getAll*/ getAllOld(
         ?string $whereClause = null,
         array $whereParams = [],
         ?string $orderBy = null,
@@ -52,6 +52,24 @@ abstract class Model implements \JsonSerializable
                 $sql .= " OFFSET $offset";
             }
 
+            $stmt = self::$connection->prepare($sql);
+            $stmt->execute($whereParams);
+            $models = $stmt->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, static::class);
+            foreach ($models as $model) {
+                $model->_dbId = $model->{static::getPkColumnName()};
+            }
+            return $models;
+        } catch (PDOException $e) {
+            throw new \Exception('Query failed: ' . $e->getMessage(), 0, $e);
+        }
+    }
+
+    public static function getAll(string $whereClause = '', array $whereParams = [], $orderBy = ''): array
+    {
+        self::connect();
+        try {
+            $sql = "SELECT * FROM `" . static::getTableName() . "`" . ($whereClause == '' ? '' : " WHERE $whereClause")
+                . ($orderBy == '' ? '' : " ORDER BY $orderBy");
             $stmt = self::$connection->prepare($sql);
             $stmt->execute($whereParams);
             $models = $stmt->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, static::class);
@@ -127,6 +145,7 @@ abstract class Model implements \JsonSerializable
      */
     public static function getConnection()
     {
+        self::connect();
         return self::$connection;
     }
 

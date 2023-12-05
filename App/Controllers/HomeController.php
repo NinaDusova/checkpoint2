@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Core\AControllerBase;
 use App\Core\Responses\Response;
+use App\Models\Reservation;
 
 /**
  * Class HomeController
@@ -31,15 +32,6 @@ class HomeController extends AControllerBase
         return $this->html();
     }
 
-    public function list(): Response
-    {
-        return $this->html(
-            [
-                'list' => ['Peter', 'Zuzana', 'Ján', 'Eduard', 'Petra', 'Jozef', 'Adam', 'Zdena']
-            ]
-        );
-    }
-
     /**
      * Example of an action accessible without authorization
      * @return \App\Core\Responses\ViewResponse
@@ -57,5 +49,14 @@ class HomeController extends AControllerBase
     public function cennik() : Response
     {
         return $this->html();
+    }
+
+    public function list() : Response
+    {
+        return $this->html(
+            [
+                'reservations' => Reservation::getAll()
+            ]
+        );
     }
 }

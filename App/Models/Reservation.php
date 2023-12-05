@@ -3,14 +3,15 @@
 
 namespace App\Models;
 
-use \App\Core\Model;
+use App\Core\Model;
+use DateTime;
 class Reservation extends Model {
     protected ?int $res_id = null;
-    protected date $res_date;
+    protected string $res_date;
     protected string $res_name;
     protected string $res_email;
 
-    protected int $res_phone;
+    protected string $res_phone;
 
     public function getResId(): ?int
     {
@@ -22,12 +23,12 @@ class Reservation extends Model {
         $this->res_id = $res_id;
     }
 
-    public function getResDate(): date
+    public function getResDate(): string
     {
-        return $this->res_date;
+        return $this->res_date;//->format('Y-m-d');
     }
 
-    public function setResDate(date $res_date): void
+    public function setResDate(/*DateTime*/string $res_date): void
     {
         $this->res_date = $res_date;
     }
@@ -52,7 +53,7 @@ class Reservation extends Model {
         $this->res_email = $res_email;
     }
 
-    public function getResPhone(): int
+    public function getResPhone(): string
     {
         return $this->res_phone;
     }

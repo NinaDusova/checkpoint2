@@ -1,14 +1,17 @@
 <?php
 
 /** @var Array $data */
-?>
+/** @var App\Models\Reservation $reservation */
 
-<?php if (count($data['list']) > 0) : ?>
-    <ul>
-        <?php foreach ($data['list'] as $item) : ?>
-            <li><?= $item ?></li>
-        <?php endforeach ?>
-    </ul>
-<?php else : ?>
-    V zozname nie sú žiadne položky.
-<?php endif ?>
+use App\Models\Reservation;
+
+?>
+<?php foreach ($data['reservations'] as $reservation): ?>
+    <div class="col-3 d-flex gap-4 flex-column">
+        <div class="m-2">
+            <?= $reservation->getResDate(), $reservation->getResName(), $reservation->getResEmail()?>
+        </div>
+    </div>
+<?php endforeach; ?>
+
+
