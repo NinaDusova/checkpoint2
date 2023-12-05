@@ -15,7 +15,7 @@
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="public/css/styl.css">
+    <link rel="stylesheet" href="public/css/style.css">
     <script src="/public/js/script.js"></script>
     <!--/head>
 <body>
@@ -56,14 +56,14 @@
 
 
 </head>
-<body>
+<body>x
 <!-- navbar -------------------------------------------------->
 <div id="header" class="header">
     <nav class="navbar navbar-expand-sm " href="<?= $link->url("home.index") ?>" aria-label="Third navbar example" >
         <div class="container-fluid">
             <ul class="navbar-nav mb-2 mb-sm-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#"><i class=""></i>Naše miestnosti</a>
+                    <a class="nav-link active" aria-current="page" href="<?= $link->url("home.list") ?>"><i class=""></i>Naše miestnosti</a>
                 </li>
             </ul>
             <ul class="navbar-nav mb-2 mb-sm-0">

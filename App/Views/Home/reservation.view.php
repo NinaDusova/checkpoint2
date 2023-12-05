@@ -1,4 +1,5 @@
 <?php
+/** @var \App\Core\LinkGenerator $link */
 ?>
 
 <div class="center container">
@@ -105,16 +106,41 @@
         </tbody>
     </table>
 
+
+    <?php if (isset($data['errors']) && count($data['errors']) > 0): ?>
+        <?php foreach ($data['errors'] as $error): ?>
+            <div class="alert alert-danger" role="alert"><?= $error ?></div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+
+    <form method="reservation" action="<?= $link->url('reservation.add') ?>" enctype="multipart/form-data">
+        <input type="hidden" name="res_id" value="<?= @$data['reservation']?->getResId() ?>">
     <div class="contacts">
-        <label for="box-name">Meno a priezvisko: </label>
-        <input type="text" id="box-name" class="box" placeholder="Meno a priezvisko">
 
-        <label for="box-phone">Telefónne číslo: </label>
-        <input type="text" id="box-phone" class="box" placeholder="Telefónne číslo">
+        <label for="res-name">Meno a priezvisko: </label>
+        <div>
+        <input type="text" class="form-control box" name="res_name" id="res_name" placeholder="Meno a priezvisko"
+               value="<?= @$data['reservation']?->getResName() ?>">
+        </div>
 
-        <label for="box-email">Email: </label>
-        <input type="text" id="box-email" class="box" placeholder="Email">
+        <label for="res-phone">Telefónne číslo: </label>
+        <div>
+            <input type="int" class="form-control box" name="res_phone" id="res_phone" placeholder="Telefónne číslo"
+                   value="<?= @$data['reservation']?->getResPhone() ?>">
+        </div>
+
+        <label for="res-email">Email: </label>
+        <div>
+            <input type="text" class="form-control box" name="res_email" id="res_email" placeholder="Email"
+                   value="<?= @$data['reservation']?->getResEmail() ?>">
+        </div>
 
         <h2 style="text-align: center">Osobné údaje sú nevyhnutné pre vytvorenie rezervácie</h2>
+
+        <button type="submit" style="background-color: lightsalmon" class="btn btn-primary">Potvrdiť</button>
+
+        <li class="nav-item">
+            <a class="nav-link" href="<?= $link->url("reservation.add") ?>">Pridať príspevok</a>
+        </li>
     </div>
 </div>

@@ -31,6 +31,15 @@ class HomeController extends AControllerBase
         return $this->html();
     }
 
+    public function list(): Response
+    {
+        return $this->html(
+            [
+                'list' => ['Peter', 'Zuzana', 'Ján', 'Eduard', 'Petra', 'Jozef', 'Adam', 'Zdena']
+            ]
+        );
+    }
+
     /**
      * Example of an action accessible without authorization
      * @return \App\Core\Responses\ViewResponse
