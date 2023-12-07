@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\AControllerBase;
-//use App\Core\HTTPException;
+use App\Core\HTTPException;
 use App\Core\Responses\Response;
 use App\Models\Reservation;
 
@@ -16,6 +16,22 @@ class ReservationController extends AControllerBase
     {
         // TODO: Implement index() method.
         return $this->html();
+    }
+
+    public function edit(): Response
+    {
+        $id = (int) $this->request()->getValue('id');
+        $reservation = Reservation::getOne($id);
+
+        if (is_null($reservation)) {
+            throw new HTTPException(404);
+        }
+
+        return $this->html(
+            [
+                'post' => $reservation
+            ]
+        );
     }
     public function save(): Response
     {
@@ -61,7 +77,7 @@ class ReservationController extends AControllerBase
 
         return $this->redirect($this->url('home.index'));
     }
-    private function formErrors()
+    private function formErrors(): array
     {
         $errors = [];
         if ($this->request()->getValue('res_phone') == null) {

@@ -1,6 +1,7 @@
 <?php
 /** @var Array $data */
-/** @var \App\Core\IAuthenticator $auth */ ?>
+/** @var \App\Core\IAuthenticator $auth */
+/** @var \App\Core\LinkGenerator $link */?>
 <div class="container-fluid">
     <div class="row">
         <div class="col">
@@ -20,6 +21,8 @@
                 <h2>Phone: <?= $reservation->getResPhone() ?></h2>
                 <h2>Email: <?= $reservation->getResEmail() ?></h2>
                 <h2>Date: <?= $reservation->getResDate() ?></h2>
+                <a href="<?= $link->url('reservation.edit', ['id' => $reservation->getId()]) ?>" class="btn btn-primary">Upraviť</a>
+                <a href="<?= $link->url('reservation.delete', ['id' => $reservation->getId()]) ?>"  class="btn btn-danger">Zmazať</a>
         </div>
     </div>
 <?php endforeach; ?>
