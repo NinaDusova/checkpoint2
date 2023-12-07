@@ -113,25 +113,35 @@
         <?php endforeach; ?>
     <?php endif; ?>
 
-    <form method="reservation" action="<?= $link->url('reservation.add') ?>" enctype="multipart/form-data">
-        <input type="hidden" name="res_id" value="<?= @$data['reservation']?->getResId() ?>">
+    <form method="post" action="<?= $link->url('reservation.save') ?>" enctype="multipart/form-data">
+
+
+
+        <input type="hidden" name="id" value="<?= @$data['reservation']?->getResId() ?>">
+
     <div class="contacts">
 
-        <label for="res-name">Meno a priezvisko: </label>
+        <label for="res_date">Dátum: </label>
         <div>
-        <input type="text" class="form-control box" name="res_name" id="res_name" placeholder="Meno a priezvisko"
+            <input type="text" class="form-control box" name="res_date" id="res_date" placeholder="Dátum"
+                   value="<?= @$data['reservation']?->getResDate()?>">
+        </div>
+
+        <label for="res_name">Meno a priezvisko: </label>
+        <div>
+        <input type="string" class="form-control box" name="res_name" id="res_name" placeholder="Meno a priezvisko"
                value="<?= @$data['reservation']?->getResName() ?>">
         </div>
 
-        <label for="res-phone">Telefónne číslo: </label>
+        <label for="res_phone">Telefónne číslo: </label>
         <div>
-            <input type="int" class="form-control box" name="res_phone" id="res_phone" placeholder="Telefónne číslo"
+            <input type="string" class="form-control box" name="res_phone" id="res_phone" placeholder="Telefónne číslo"
                    value="<?= @$data['reservation']?->getResPhone() ?>">
         </div>
 
-        <label for="res-email">Email: </label>
+        <label for="res_email">Email: </label>
         <div>
-            <input type="text" class="form-control box" name="res_email" id="res_email" placeholder="Email"
+            <input type="string" class="form-control box" name="res_email" id="res_email" placeholder="Email"
                    value="<?= @$data['reservation']?->getResEmail() ?>">
         </div>
 

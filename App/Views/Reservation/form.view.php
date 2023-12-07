@@ -8,7 +8,7 @@
     <?php endforeach; ?>
 <?php endif; ?>
 <form method="reservation" action="<?= $link->url('reservation.add') ?>" enctype="multipart/form-data">
-    <input type="hidden" name="res_id" value="<?= @$data['reservation']?->getResId() ?>">
+    <input type="hidden" name="id" value="<?= @$data['reservation']?->getId() ?>">
 
     <label for="inputGroupFile02" class="form-label">Dátum</label>
     <div class="input-group mb-3 has-validation">
