@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\AControllerBase;
-use App\Core\HTTPException;
+//use App\Core\HTTPException;
 use App\Core\Responses\Response;
 use App\Models\Reservation;
 
@@ -30,11 +30,8 @@ class ReservationController extends AControllerBase
 
 
         $id = (int)$this->request()->getValue('id');
-        //$id = (int)$this->request()->getValue('id'); mozno to nieco zmeni ?
-        $oldFileName = "";
         if ($id > 0) {
             $reservation = Reservation::getOne($id);
-            $oldFileName = $reservation->getResName();
         } else {
             $reservation = new Reservation();
         }
@@ -69,12 +66,12 @@ class ReservationController extends AControllerBase
         $errors = [];
         if ($this->request()->getValue('res_phone') == null) {
             $errors[] = "Telefónne číslo je povinné!";
-        } else if (strlen($this->request()->getValue('res_phone')) != 10 /*|| strlen($this->request()->getValue('res_phone'))!= 12*/) {
+ /**       } else if ((strlen($this->request()->getValue('res_phone')) != 10) || (strlen($this->request()->getValue('res_phone'))!= 12)) {
             $errors[] = "Telefónne číslo je v nesprávnom tvare!";
-        } else if (strlen($this->request()->getValue('res_phone')) == 10 && $this->request()->getValue('res_phone')[0] != '0') {
+        } else if ((strlen($this->request()->getValue('res_phone')) == 10) && ($this->request()->getValue('res_phone')[0] != '0')) {
             $errors[] = "Telefónne číslo je v nesprávnom tvare!";
-        } else if (strlen($this->request()->getValue('res_phone')) == 12 && $this->request()->getValue('res_phone')[0] != '+') {
-            $errors[] = "Telefónne číslo je v nesprávnom tvare!";
+        } else if ((strlen($this->request()->getValue('res_phone')) == 12 )&& ($this->request()->getValue('res_phone')[0] != '+')) {
+            $errors[] = "Telefónne číslo je v nesprávnom tvare!"; */
         }
         if ($this->request()->getValue('res_name') == "") {
             $errors[] = "Meno je povinné!";

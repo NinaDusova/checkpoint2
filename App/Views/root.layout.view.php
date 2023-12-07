@@ -63,7 +63,12 @@
         <div class="container-fluid">
             <ul class="navbar-nav mb-2 mb-sm-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="<?= $link->url("home.list") ?>"><i class=""></i>Naše miestnosti</a>
+                    <a class="nav-link active" aria-current="page" href="<?= $link->url("auth.login") ?>"><i class=""></i>Admin</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav mb-2 mb-sm-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="<?= $link->url("home.admin") ?>"><i class=""></i>Naše miestnosti</a>
                 </li>
             </ul>
             <ul class="navbar-nav mb-2 mb-sm-0">

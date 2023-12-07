@@ -51,12 +51,17 @@ class HomeController extends AControllerBase
         return $this->html();
     }
 
-    public function list() : Response
+    public function admin() : Response
     {
         return $this->html(
             [
                 'reservations' => Reservation::getAll()
             ]
         );
+    }
+
+    public function login() : Response
+    {
+        return $this->html();
     }
 }

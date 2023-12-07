@@ -117,7 +117,7 @@
 
 
 
-        <input type="hidden" name="id" value="<?= @$data['reservation']?->getResId() ?>">
+        <input type="hidden" name="id" value="<?= @$data['reservation']?->getId() ?>">
 
     <div class="contacts">
 
@@ -129,28 +129,24 @@
 
         <label for="res_name">Meno a priezvisko: </label>
         <div>
-        <input type="string" class="form-control box" name="res_name" id="res_name" placeholder="Meno a priezvisko"
+        <input type="text" class="form-control box" name="res_name" id="res_name" placeholder="Meno a priezvisko"
                value="<?= @$data['reservation']?->getResName() ?>">
         </div>
 
         <label for="res_phone">Telefónne číslo: </label>
         <div>
-            <input type="string" class="form-control box" name="res_phone" id="res_phone" placeholder="Telefónne číslo"
+            <input type="text" class="form-control box" name="res_phone" id="res_phone" placeholder="Telefónne číslo"
                    value="<?= @$data['reservation']?->getResPhone() ?>">
         </div>
 
         <label for="res_email">Email: </label>
         <div>
-            <input type="string" class="form-control box" name="res_email" id="res_email" placeholder="Email"
+            <input type="text" class="form-control box" name="res_email" id="res_email" placeholder="Email"
                    value="<?= @$data['reservation']?->getResEmail() ?>">
         </div>
 
         <h2 style="text-align: center">Osobné údaje sú nevyhnutné pre vytvorenie rezervácie</h2>
 
         <button type="submit" style="background-color: lightsalmon" class="btn btn-primary">Potvrdiť</button>
-
-        <li class="nav-item">
-            <a class="nav-link" href="<?= $link->url("reservation.add") ?>">Pridať príspevok</a>
-        </li>
     </div>
 </div>
