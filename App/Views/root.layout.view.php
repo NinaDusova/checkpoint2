@@ -56,7 +56,7 @@
 
 
 </head>
-<body>x
+<body>
 <!-- navbar -------------------------------------------------->
 <div id="header" class="header">
     <nav class="navbar navbar-expand-sm " href="<?= $link->url("home.index") ?>" aria-label="Third navbar example" >
@@ -68,7 +68,7 @@
             </ul>
             <ul class="navbar-nav mb-2 mb-sm-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="<?= $link->url("home.admin") ?>"><i class=""></i>Naše miestnosti</a>
+                    <a class="nav-link active" aria-current="page" href="<?= $link->url("") ?>"><i class=""></i>Naše miestnosti</a>
                 </li>
             </ul>
             <ul class="navbar-nav mb-2 mb-sm-0">

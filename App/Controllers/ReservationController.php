@@ -1,9 +1,10 @@
 <?php
-
 namespace App\Controllers;
 
+use App\Auth\SimpleAuthenticator;
 use App\Core\AControllerBase;
 use App\Core\HTTPException;
+use App\Core\Responses\RedirectResponse;
 use App\Core\Responses\Response;
 use App\Models\Reservation;
 
@@ -29,25 +30,17 @@ class ReservationController extends AControllerBase
 
         return $this->html(
             [
-                'post' => $reservation
+                'reservation' => $reservation
             ]
         );
     }
     public function save(): Response
     {
-       // $errors = $this->formError();
-        //if (count($errors) > 0) {
-         //   return $this->html(
-          //      [
-           //         'errors' => $errors
-            //    ], 'edit'
-            //);
-        //}
-
-
         $id = (int)$this->request()->getValue('id');
+
         if ($id > 0) {
             $reservation = Reservation::getOne($id);
+            //$reservation->delete(); nefunguje
         } else {
             $reservation = new Reservation();
         }
@@ -64,9 +57,20 @@ class ReservationController extends AControllerBase
                     'errors' => $formErrors
                 ], 'add'
             );
+        } else {
+            $reservation->setResName($this->request()->getValue('res_name'));
+            $reservation->setResDate($this->request()->getValue('res_date'));
+            $reservation->setResPhone($this->request()->getValue('res_phone'));
+            $reservation->setResEmail($this->request()->getValue('res_email'));
+            $reservation->save();
+           // return $this->redirect($this->url('admin.index'));
+            $auth = new SimpleAuthenticator();
+            if ($auth->isLogged()) {
+                return new RedirectResponse($this->url('home.index'));
+            } else {
+                return new RedirectResponse($this->url('home.index'));
+            }
         }
-        $reservation->save();
-        return $this->redirect($this->url('home.index'));
     }
 
     public function delete(): Response
@@ -75,7 +79,7 @@ class ReservationController extends AControllerBase
         $reservation = Reservation::getOne($id);
         $reservation->delete();
 
-        return $this->redirect($this->url('home.index'));
+        return $this->redirect($this->url('admin.index'));
     }
     private function formErrors(): array
     {
