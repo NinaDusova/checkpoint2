@@ -215,6 +215,60 @@ body {
     margin: 0 auto;
 }
 
+/*reservations*/
+
+.table-date {
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+}
+
+#header {
+    padding: 10px;
+    color: #d36c6c;
+    font-size: 26px;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: space-between;
+}
+
+#container {
+    width: 770px;
+}
+
+#weekdays {
+    width: 100%;
+    display: flex;
+    color: #247BA0;
+}
+
+#weekdays div {
+    margin-right: 10px;
+    width: 100px;
+    padding: 10px;
+}
+
+#calender {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.day {
+    width: 100px;
+    padding: 10px;
+    height: 100px;
+    cursor: pointer;
+    box-sizing: border-box;
+    background-color: white;
+    margin: 5px;
+    box-shadow: 0px 0px 3px white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .table {
     width: 600px;
     max-width: 100%;
