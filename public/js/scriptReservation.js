@@ -1,36 +1,4 @@
 class ReservationCalendar {
-
-
-/*    searchDatabase() {
-        const searchDate = this.resDateInput.value;
-
-        // Použite fetch alebo inú metódu na zaslanie požiadavky na backend
-        fetch(`http://localhost/?c=Reservation&a=search`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-            .then(response => response.json())
-            .then(data => {
-                // Spracujte úspešne načítané dáta z databázy
-                console.log('Výsledky vyhľadávania:', data);
-            })
-            .catch(error => {
-                // Spracujte chybu počas vyhľadávania
-                console.error('Chyba pri vyhľadávaní:', error);
-            });
-    }
-
-    // Metóda na inicializáciu kalendára
-    initializeCalendar() {
-        // ... (existujúci kód)
-
-        // Pridajte udalosť na zavolanie vyhľadávania databázy po kliknutí
-        const searchButton = document.getElementById('searchButton');
-        searchButton.addEventListener('click', () => this.searchDatabase());
-    }*/
-
     constructor() {
         this.currentYear = null;
         this.currentMonth = null;
@@ -129,20 +97,20 @@ class ReservationCalendar {
         document.getElementById('currentMonthYear').textContent = `${this.months[month]} ${year}`;
     }
 
-    prevMonth() {
-        this.currentMonth--;
-        if (this.currentMonth < 0) {
-            this.currentMonth = 11;
-            this.currentYear--;
-        }
-        this.generateCalendar(this.currentYear, this.currentMonth);
-    }
-
     nextMonth() {
         this.currentMonth++;
         if (this.currentMonth > 11) {
             this.currentMonth = 0;
             this.currentYear++;
+        }
+        this.generateCalendar(this.currentYear, this.currentMonth);
+    }
+
+    prevMonth() {
+        this.currentMonth--;
+        if (this.currentMonth < 0) {
+            this.currentMonth = 11;
+            this.currentYear--;
         }
         this.generateCalendar(this.currentYear, this.currentMonth);
     }

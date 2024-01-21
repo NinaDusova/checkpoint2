@@ -14,11 +14,11 @@
     <div id="calender">
         <h2></h2>
         <div class="controls">
-            <button onclick="prevMonth()">
+            <button onclick="reservationCalendar.prevMonth()">
                 <i class="bi bi-caret-left-square-fill"></i>
             </button>
             <span id="currentMonthYear"></span>
-            <button onclick="nextMonth()">
+            <button onclick="reservationCalendar.nextMonth()">
                 <i class="bi bi-caret-right-square-fill"></i>
             </button>
         </div>

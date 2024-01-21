@@ -24,16 +24,58 @@ class ReservationController extends AControllerBase
         return $this->html();
     }
 
-    public function search(): Response
+    /*public function search(): Response
     {
-        $param = "%" . $this->request()->getValue('res_date') . "%";
-        $reservations = Reservation::getAll('res_date LIKE ?', [$param]);
+        //$data = $this->request()->getRawBodyJSON();
+        //$param = "%" . $this->request()->getValue('res_date') . "%";
+        //$param =$this->request()->getValue('res_date') . "%";
+        //$reservations = Reservation::getAll('res_date LIKE ?', [$param]);
        /* return $this->html(
             [
                 'reservations' => $reservations
             ]
         );*/
-        return $this->json(['reservations' => $reservations]);
+       // return $this->json(['reservations' => $reservations]);
+       //return $this->json(['reservations' => $param]);
+
+
+
+
+        //-----------------------------------------
+     /*   $data = $this->request()->getRawBodyJSON();
+        //$param = "%" . json_encode($data) . "%";
+        //$decodedData = json_decode($data, true);
+        //$value = $decodedData['res_date'][0];
+
+        //$reservations = Reservation::getAll('res_name LIKE ?', [$value]);
+        $reservations = Reservation::getAll();
+
+       /* if (isset($data['res_date'])) {
+            // Concatenate '%' to the 'res_date' value
+            $data['res_date'] .= "%";
+
+            // Return the modified JSON data
+            return $this->json($data);
+        } else {
+            // Handle the case where 'res_date' is not present in the request data
+            return $this->json(['error' => 'res_date is missing in the request data'], 400);
+        }*/
+
+        //return $this->json($reservations);
+       // return $this->json($reservations);
+       // return $this->json(['param' => $param]);
+       // return $this->json((['reservations' => $reservations]));
+       // return $this->json($reservations);
+     /*   return $this->json($data);
+    }*/
+
+    public function search(): Response
+    {
+        $searchValue = $this->request()->getValue('search');
+        $param = "%" . $searchValue . "%";
+        $reservations = Reservation::getAll('res_date LIKE ?', [$param]);
+        return $this->json($reservations);
+
     }
 
     public function edit(): Response
