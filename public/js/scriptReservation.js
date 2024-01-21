@@ -1,7 +1,7 @@
 class ReservationCalendar {
 
 
- /*   searchDatabase() {
+/*    searchDatabase() {
         const searchDate = this.resDateInput.value;
 
         // Použite fetch alebo inú metódu na zaslanie požiadavky na backend

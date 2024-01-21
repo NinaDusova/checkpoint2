@@ -28,11 +28,12 @@ class ReservationController extends AControllerBase
     {
         $param = "%" . $this->request()->getValue('res_date') . "%";
         $reservations = Reservation::getAll('res_date LIKE ?', [$param]);
-        return $this->html(
+       /* return $this->html(
             [
                 'reservations' => $reservations
             ]
-        );
+        );*/
+        return $this->json(['reservations' => $reservations]);
     }
 
     public function edit(): Response
