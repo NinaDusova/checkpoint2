@@ -41,10 +41,10 @@ class HomeController extends AControllerBase
         return $this->html();
     }
 
-    public function reservationn() : Response
+    /*public function reservationn() : Response
     {
         return $this->html();
-    }
+    }*/
 
     public function cennik() : Response
     {

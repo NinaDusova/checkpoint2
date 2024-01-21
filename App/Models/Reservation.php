@@ -8,6 +8,7 @@ use DateTime;
 class Reservation extends Model {
     protected ?int $id = null;
     protected string $res_date;
+    protected string $res_time;
     protected string $res_name;
     protected string $res_email;
 
@@ -62,5 +63,17 @@ class Reservation extends Model {
     {
         $this->res_phone = $res_phone;
     }
+
+    public function getResTime(): string
+    {
+        return $this->res_time;
+    }
+
+    public function setResTime(string $res_time): void
+    {
+        $this->res_time = $res_time;
+    }
+
+
 
 }

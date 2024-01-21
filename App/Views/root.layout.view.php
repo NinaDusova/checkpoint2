@@ -73,7 +73,7 @@
             </ul>
             <ul class="navbar-nav mb-2 mb-sm-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="<?= $link->url("home.reservationn") ?>"><i class=""></i>Rezervácie</a>
+                    <a class="nav-link active" aria-current="page" href="<?= $link->url("reservation.reservationn") ?>"><i class=""></i>Rezervácie</a>
                 </li>
             </ul>
             <a class="navbar-brand" href="<?= $link->url("home.index") ?>">

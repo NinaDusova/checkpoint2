@@ -15,17 +15,24 @@
 </div>
 
 <?php foreach ($data['reservations'] as $reservation): ?>
-    <div class="col-3 d-flex gap-4 flex-column">
-        <div class="m-2">
-            <h2>Name: <?= $reservation->getResName() ?> </h2>
-            <h2>Phone: <?= $reservation->getResPhone() ?></h2>
-            <h2>Email: <?= $reservation->getResEmail() ?></h2>
-            <h2>Date: <?= $reservation->getResDate() ?></h2>
+        <div class="pp">
+            <table class="table">
+                <tbody>
+                <tr>
+                    <td><?= $reservation->getResDate() ?></td>
+                    <td><?= $reservation->getResTime() ?></td>
+                    <td><?= $reservation->getResName() ?></td>
+                    <td><?= $reservation->getResPhone() ?></td>
+                    <td><?= $reservation->getResEmail() ?></td>
+                    <td>
+                        <a href="<?= $link->url('reservation.edit', ['id' => $reservation->getId()]) ?>" class="btn btn-primary">Upraviť</a>
+                    </td>
+                    <td>
+                        <a href="<?= $link->url('reservation.delete', ['id' => $reservation->getId()]) ?>" class="btn btn-danger">Zmazať</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
-        <div class="m-2 d-flex gap-2 justify-content-end">
-                <a href="<?= $link->url('reservation.edit', ['id' => $reservation->getId()]) ?>" class="btn btn-primary">Upraviť</a>
-                <a href="<?= $link->url('reservation.delete', ['id' => $reservation->getId()]) ?>"  class="btn btn-danger">Zmazať</a>
-        </div>
-    </div>
 <?php endforeach; ?>
 

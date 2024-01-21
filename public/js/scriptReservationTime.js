@@ -1,42 +1,48 @@
-function createReservationTable() {
-    let table = document.getElementById("reservationTable");
-
-    for (let i = 13; i <= 20; i++) {
-        let row = table.insertRow();
-        let timeCell = row.insertCell(0);
-
-        timeCell.addEventListener("click", function () {
-            handleTimeClick(timeCell);
-        });
-
-        let time = i + ":00";
-        timeCell.textContent = time;
+class ReservationTable {
+    constructor() {
+        this.reservationTable = document.getElementById("reservationTable");
+        this.resTimeInput = document.getElementById('res_time');
+        this.addEventListeners();
     }
-}
 
-function handleTimeClick(cell) {
-    let allCells = document.querySelectorAll("#reservationTable td");
+    initializeTable() {
+        for (let i = 13; i <= 20; i++) {
+            let row = this.reservationTable.insertRow();
+            let timeCell = row.insertCell(0);
+            timeCell.style.backgroundColor = '#DDBDB7';
 
-    allCells.forEach(function (otherCell) {
-        unhighlightTimeCell(otherCell);
-    });
+            timeCell.addEventListener("click", () => this.handleTimeClick(timeCell));
 
-    cell.style.backgroundColor = 'darksalmon';
-}
+            timeCell.textContent = i + ":00";
+        }
+    }
 
-function unhighlightTimeCell(cell) {
-    cell.style.backgroundColor = '';
-}
-
-document.addEventListener("click", function (event) {
-    let targetElement = event.target;
-
-    if (!table.contains(targetElement)) {
+    handleTimeClick(cell) {
         let allCells = document.querySelectorAll("#reservationTable td");
-        allCells.forEach(function (cell) {
-            unhighlightCell(cell);
+
+        allCells.forEach(function (otherCell) {
+            this.unhighlightCell(otherCell);
+        }, this);
+
+        cell.style.backgroundColor = 'darksalmon';
+        this.resTimeInput.value = cell.textContent;
+    }
+
+    unhighlightCell(cell) {
+        cell.style.backgroundColor = '#DDBDB7';
+    }
+
+    addEventListeners() {
+        document.addEventListener("click", (event) => {
+            let targetElement = event.target;
+
+            if (!this.reservationTable.contains(targetElement)) {
+                let allCells = document.querySelectorAll("#reservationTable td");
+                allCells.forEach((cell) => this.unhighlightCell(cell));
+            }
         });
     }
-});
+}
 
-createReservationTable();
+const reservationTable = new ReservationTable();
+reservationTable.initializeTable();

@@ -1,135 +1,159 @@
-let currentYear, currentMonth;
-let lastClickedCell = null;
-function highlightCell(cell) {
-    cell.style.backgroundColor = 'darksalmon';
+class ReservationCalendar {
 
-    if (lastClickedCell && lastClickedCell !== cell) {
-        unhighlightCell(lastClickedCell);
+
+ /*   searchDatabase() {
+        const searchDate = this.resDateInput.value;
+
+        // Použite fetch alebo inú metódu na zaslanie požiadavky na backend
+        fetch(`http://localhost/?c=Reservation&a=search`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then(response => response.json())
+            .then(data => {
+                // Spracujte úspešne načítané dáta z databázy
+                console.log('Výsledky vyhľadávania:', data);
+            })
+            .catch(error => {
+                // Spracujte chybu počas vyhľadávania
+                console.error('Chyba pri vyhľadávaní:', error);
+            });
     }
 
-    lastClickedCell = cell;
+    // Metóda na inicializáciu kalendára
+    initializeCalendar() {
+        // ... (existujúci kód)
 
-    const year = currentYear;
-    const month = currentMonth + 1;
-    const day = cell.textContent;
-    const formattedDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
-    resDateInput.value = formattedDate;
+        // Pridajte udalosť na zavolanie vyhľadávania databázy po kliknutí
+        const searchButton = document.getElementById('searchButton');
+        searchButton.addEventListener('click', () => this.searchDatabase());
+    }*/
 
- //   displaySelectedYear(year);
- //   displaySelectedDay(day);
- //   displaySelectedMonth(month);
- //   displaySelectedDate(day, month, year);
-}
-
-const resDateInput = document.getElementById('res_date');
-
-resDateInput.addEventListener('input', function () {
-    const selectedDate = new Date(this.value);
-    const day = selectedDate.getDate();
-    const month = selectedDate.getMonth() + 1;
-    const year = selectedDate.getFullYear();
-
-    displaySelectedDate(day, month, year);
-});
-
-function unhighlightCell(cell) {
-    cell.style.backgroundColor = '#DDBDB7';
-}
-
-
-function displaySelectedDay(day) {
-    const selectedDayElement = document.getElementById('selectedDay');
-    selectedDayElement.textContent = `Dostupné miesta dňa: ${day}`;
-}
-
-function displaySelectedYear(year) {
-    const selectedYearElement = document.getElementById('selectedYear');
-    selectedYearElement.textContent = `Dostupné miesta roku: ${year}`;
-}
-
-function displaySelectedMonth(month) {
-    const selectedMonthElement = document.getElementById('selectedMonth');
-    selectedMonthElement.textContent = `Dostupné miesta roku: ${month}`;
-}
-
-function displaySelectedDate(day, month, year) {
-    const selectedDateElement = document.getElementById('selectedDate');
-    selectedDateElement.textContent = `Dostupné miesta datumu:${year}-${month}-${day}`;
-}
-
-
-
-function generateCalendar(year, month) {
-    const container = document.getElementById('calendar-container');
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-    const firstDay = new Date(year, month, 1).getDay();
-
-    const table = document.createElement('table');
-    container.innerHTML = '';
-    container.appendChild(table);
-
-    const headerRow = table.insertRow();
-    const daysOfWeek = ['Ne', 'Po', 'Ut', 'St', 'št', 'Pia', 'So'];
-
-    for (let day of daysOfWeek) {
-        const th = document.createElement('th');
-        th.textContent = day;
-        headerRow.appendChild(th);
+    constructor() {
+        this.currentYear = null;
+        this.currentMonth = null;
+        this.lastClickedCell = null;
+        this.resDateInput = document.getElementById('res_date');
+        this.months = ['Január', 'Február', 'Marec', 'April', 'Máj', 'Jún', 'Júl', 'August', 'September', 'Október', 'November', 'December'];
     }
 
-    let dayCounter = 1;
-    for (let i = 0; i < 6; i++) {
-        const row = table.insertRow();
+    highlightCell(cell) {
+        cell.style.backgroundColor = 'darksalmon';
 
-        for (let j = 0; j < 7; j++) {
-            const cell = row.insertCell();
-
-            if (i === 0 && j < firstDay) {
-                continue;
-            }
-
-            if (dayCounter > daysInMonth) {
-                break;
-            }
-
-            cell.textContent = dayCounter;
-
-            if (i === 0 && j < firstDay) {
-                cell.style.backgroundColor = 'darksalmon'; // Farba pre dni pred prvým dňom mesiaca
-            } else {
-                cell.style.backgroundColor = '#DDBDB7'; // Farba pre dni v mesiaci
-                cell.addEventListener('click', function () {
-                    highlightCell(this);
-                });
-            }
-
-            dayCounter++;
+        if (this.lastClickedCell && this.lastClickedCell !== cell) {
+            this.unhighlightCell(this.lastClickedCell);
         }
+
+        this.lastClickedCell = cell;
+
+        const year = this.currentYear;
+        const month = this.currentMonth + 1;
+        const day = cell.textContent;
+        this.resDateInput.value = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+
+        this.displaySelectedDate(day, month, year);
     }
 
-    document.getElementById('currentMonthYear').textContent = `${months[month]} ${year}`;
-}
-
-function prevMonth() {
-    currentMonth--;
-    if (currentMonth < 0) {
-        currentMonth = 11;
-        currentYear--;
+    unhighlightCell(cell) {
+        cell.style.backgroundColor = '#DDBDB7';
     }
-    generateCalendar(currentYear, currentMonth);
-}
 
-function nextMonth() {
-    currentMonth++;
-    if (currentMonth > 11) {
-        currentMonth = 0;
-        currentYear++;
+    displaySelectedDay(day) {
+        const selectedDayElement = document.getElementById('selectedDay');
+        selectedDayElement.textContent = `Dostupné miesta dňa: ${day}`;
     }
-    generateCalendar(currentYear, currentMonth);
+
+    displaySelectedYear(year) {
+        const selectedYearElement = document.getElementById('selectedYear');
+        selectedYearElement.textContent = `Dostupné miesta roku: ${year}`;
+    }
+
+    displaySelectedMonth(month) {
+        const selectedMonthElement = document.getElementById('selectedMonth');
+        selectedMonthElement.textContent = `Dostupné miesta roku: ${month}`;
+    }
+
+    displaySelectedDate(day, month, year) {
+        const selectedDateElement = document.getElementById('selectedDate');
+        selectedDateElement.textContent = `Dostupné miesta datumu:${year}-${month}-${day}`;
+    }
+
+    generateCalendar(year, month) {
+        const container = document.getElementById('calendar-container');
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const firstDay = new Date(year, month, 1).getDay();
+
+        const table = document.createElement('table');
+        container.innerHTML = '';
+        container.appendChild(table);
+
+        const headerRow = table.insertRow();
+        const daysOfWeek = ['Ne', 'Po', 'Ut', 'St', 'št', 'Pia', 'So'];
+
+        for (let day of daysOfWeek) {
+            const th = document.createElement('th');
+            th.textContent = day;
+            headerRow.appendChild(th);
+        }
+
+        let dayCounter = 1;
+        for (let i = 0; i < 6; i++) {
+            const row = table.insertRow();
+
+            for (let j = 0; j < 7; j++) {
+                const cell = row.insertCell();
+
+                if (i === 0 && j < firstDay) {
+                    continue;
+                }
+
+                if (dayCounter > daysInMonth) {
+                    break;
+                }
+
+                cell.textContent = dayCounter;
+
+                if (i === 0 && j < firstDay) {
+                    cell.style.backgroundColor = 'darksalmon';
+                } else {
+                    cell.style.backgroundColor = '#DDBDB7';
+                    cell.addEventListener('click', () => this.highlightCell(cell));
+                }
+
+                dayCounter++;
+            }
+        }
+
+        document.getElementById('currentMonthYear').textContent = `${this.months[month]} ${year}`;
+    }
+
+    prevMonth() {
+        this.currentMonth--;
+        if (this.currentMonth < 0) {
+            this.currentMonth = 11;
+            this.currentYear--;
+        }
+        this.generateCalendar(this.currentYear, this.currentMonth);
+    }
+
+    nextMonth() {
+        this.currentMonth++;
+        if (this.currentMonth > 11) {
+            this.currentMonth = 0;
+            this.currentYear++;
+        }
+        this.generateCalendar(this.currentYear, this.currentMonth);
+    }
+
+    initializeCalendar() {
+        const currentDate = new Date();
+        this.currentYear = currentDate.getFullYear();
+        this.currentMonth = currentDate.getMonth();
+        this.generateCalendar(this.currentYear, this.currentMonth);
+    }
 }
 
-const currentDate = new Date();
-currentYear = currentDate.getFullYear();
-currentMonth = currentDate.getMonth();
-const months = ['Január', 'Február', 'Marec', 'April', 'Máj', 'Jún', 'Júl', 'August', 'September', 'Október', 'November', 'December'];
-generateCalendar(currentYear, currentMonth);
+const reservationCalendar = new ReservationCalendar();
+reservationCalendar.initializeCalendar();

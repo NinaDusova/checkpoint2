@@ -19,6 +19,22 @@ class ReservationController extends AControllerBase
         return $this->html();
     }
 
+    public function reservationn() : Response
+    {
+        return $this->html();
+    }
+
+    public function search(): Response
+    {
+        $param = "%" . $this->request()->getValue('res_date') . "%";
+        $reservations = Reservation::getAll('res_date LIKE ?', [$param]);
+        return $this->html(
+            [
+                'reservations' => $reservations
+            ]
+        );
+    }
+
     public function edit(): Response
     {
         $id = (int) $this->request()->getValue('id');
@@ -46,20 +62,23 @@ class ReservationController extends AControllerBase
         }
         $reservation->setResName($this->request()->getValue('res_name'));
         $reservation->setResDate($this->request()->getValue('res_date'));
+        $reservation->setResTime($this->request()->getValue('res_time'));
         $reservation->setResPhone($this->request()->getValue('res_phone'));
         $reservation->setResEmail($this->request()->getValue('res_email'));
 
         $formErrors = $this->formErrors();
         if (count($formErrors) > 0) {
+           // return $this->redirect($this->url('admin.index'))(
             return $this->html(
                 [
                     'reservation' => $reservation,
                     'errors' => $formErrors
-                ], 'add'
+                ], 'reservationn'
             );
         } else {
             $reservation->setResName($this->request()->getValue('res_name'));
             $reservation->setResDate($this->request()->getValue('res_date'));
+            $reservation->setResTime($this->request()->getValue('res_time'));
             $reservation->setResPhone($this->request()->getValue('res_phone'));
             $reservation->setResEmail($this->request()->getValue('res_email'));
             $reservation->save();
@@ -86,17 +105,19 @@ class ReservationController extends AControllerBase
         $errors = [];
         if ($this->request()->getValue('res_phone') == null) {
             $errors[] = "Telefónne číslo je povinné!";
- /**       } else if ((strlen($this->request()->getValue('res_phone')) != 10) || (strlen($this->request()->getValue('res_phone'))!= 12)) {
+        }/* else if (!(strlen($this->request()->getValue('res_phone')) == 10 || strlen($this->request()->getValue('res_phone')) == 12)) {
             $errors[] = "Telefónne číslo je v nesprávnom tvare!";
-        } else if ((strlen($this->request()->getValue('res_phone')) == 10) && ($this->request()->getValue('res_phone')[0] != '0')) {
-            $errors[] = "Telefónne číslo je v nesprávnom tvare!";
-        } else if ((strlen($this->request()->getValue('res_phone')) == 12 )&& ($this->request()->getValue('res_phone')[0] != '+')) {
-            $errors[] = "Telefónne číslo je v nesprávnom tvare!"; */
+        }*/
+        if ($this->request()->getValue('res_date') == null) {
+            $errors[] = "Dátum je povinný!";
+        }
+        if ($this->request()->getValue('res_time') == null) {
+            $errors[] = "Čas je povinný!";
         }
         if ($this->request()->getValue('res_name') == "") {
             $errors[] = "Meno je povinné!";
         }
-        if (!str_contains($this->request()->getValue('res_email'), '@')) {
+        if ($this->request()->getValue('res_name') == "" && !str_contains($this->request()->getValue('res_email'), '@')) {
             $errors[] = "Nesprávny tvar emailu!";
         }
         return $errors;
