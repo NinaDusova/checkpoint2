@@ -31,7 +31,7 @@ class AdminController extends AControllerBase
     {
         return $this->html(
             [
-                'reservations' => Reservation::getAll()
+                'reservations' => Reservation::getAll(orderBy: '`res_date` asc')
             ]
         );
     }

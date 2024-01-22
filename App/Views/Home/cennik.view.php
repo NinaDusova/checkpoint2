@@ -1,3 +1,7 @@
+<?php
+/** @var \App\Core\LinkGenerator $link */
+?>
+
 <!--price list -------------------------------------------------->
 <div class="price-section">
     <div class="price-list">
@@ -20,7 +24,7 @@
                     Študentská skupinová zľava s ISIC 4€
                 </h2>
 
-                <a href="#" class="icon-link">
+                <a href="<?= $link->url("home.miestnostiplague") ?>" class="icon-link">
                     Zisti viac o hre
                     <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"></use></svg>
                 </a>
@@ -49,7 +53,7 @@
                     Študentská skupinová zľava s ISIC 4€
                 </h2>
 
-                <a href="#" class="icon-link">
+                <a href="<?= $link->url("home.miestnosticake") ?>" class="icon-link">
                     Zisti viac o hre
                     <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"></use></svg>
                 </a>
@@ -74,13 +78,19 @@
                     Študentská skupinová zľava s ISIC 4€
                 </h2>
 
-                <a href="#" class="icon-link">
+                <a href="<?= $link->url("home.miestnostihello") ?>" class="icon-link">
                     Zisti viac o hre
                     <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"></use></svg>
                 </a>
             </div>
         </div>
     </div>
+</div>
+
+<div style="display: flex; justify-content: center; align-items: center; height: 10vh; margin: 0;">
+    <a href="<?= $link->url("reservation.reservationn") ?> " style="text-decoration: none;">
+        <button style="background-color: pink; color: white; padding: 10px 20px; font-size: 16px; border: none; cursor: pointer;">ZAREZERVOVAŤ</button>
+    </a>
 </div>
 
 <!--price list -------------------------------------------------->

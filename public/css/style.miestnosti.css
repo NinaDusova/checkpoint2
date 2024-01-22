@@ -1,0 +1,25 @@
+.miestnosti-box {
+    display: flex;
+    justify-content: center;
+}
+.rectangle-room {
+    background-color: rgb(255, 174, 220);
+    padding: 5px;
+}
+
+.rectangle-room-img {
+    padding: 10px;
+}
+
+.red-square {
+    width: 500px; /* Prispôsobte šírku štvorca podľa potreby */
+    height: 335px; /* Prispôsobte výšku štvorca podľa potreby */
+    background-color: rgba(252, 202, 236, 0.73);
+    top: 0;
+    left: 0;
+}
+
+h7 {
+    font-size: 20px;
+    text-align: center;
+}

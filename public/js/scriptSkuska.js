@@ -1,35 +1,17 @@
-const searchButton = document.getElementById('searchButton');
+//const searchButton = document.getElementById('searchButton');
 
-const searchInput = document.getElementById('searchHolder');
+//const searchInput = document.getElementById('searchHolder');
+//const searchInput = document.getElementById('res_date');
+
+let finalValue = null;
 
 let searchValue;
 
-/*function searchDatabase() {
-    if (searchValue !== '') {
-        const form = document.getElementById('searchHolder');
-
-        fetch(`http://localhost/?c=Reservation&a=search`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ res_date: searchValue }),
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Výsledky vyhľadávania:', data);
-            })
-            .catch(error => {
-                console.error('Chyba pri vyhľadávaní:', error);
-                return error.text(); // Add this line to get the response text
-            })
-            .then(errorMessage => {
-                console.error('Error message:', errorMessage);
-            });
-    }
-}*/
-
 function searchDatabase() {
+    const searchInput = document.getElementById('res_date');
+    searchValue = searchInput.value.split();
+    //console.log('Hodnota vyhľadávania:', searchValue);
+
     if (searchValue !== '') {
         const form = document.getElementById('searchHolder');
 
@@ -47,22 +29,19 @@ function searchDatabase() {
         })
             .then(response => response.json())
             .then(data => {
-                console.log('Výsledky vyhľadávania:', data);
+                //console.log('Výsledky vyhľadávania:', data);
+                finalValue = data;
+                reservationTable.updateReservationArray(finalValue);
             })
             .catch(error => {
-                console.error('Chyba pri vyhľadávaní:', error);
+               // console.error('Chyba pri vyhľadávaní:', error);
                 return error.text();
             })
-            .then(errorMessage => {
-                console.error('Error message:', errorMessage);
-            });
     }
 }
-
-
-searchButton.addEventListener('click', function() {
+/*searchButton.addEventListener('click', function() {
     searchValue = searchInput.value.split();
     console.log('Hodnota vyhľadávania:', searchValue);
-});
+});*/
 
-document.getElementById('searchButton').onclick = searchDatabase;
+//document.getElementById('searchButton').onclick = searchDatabase;

@@ -45,16 +45,6 @@
                        value="<?= @$data['reservation']?->getResDate()?>" style="display: none;">
             </div>
 
-            <!-- ---------------------------------------------TODO----------------------------------------------------->
-            <form id="searchForm" data-url="<?= $link->url("reservation.search") ?>" class="mb-3 offset-md-3">
-                <div class="input-group" style="max-width: 632px">
-                    <label for="searchHolder"></label><input type="text" id="searchHolder" class="form-control" name="search" placeholder="Search by title...">
-                    <button type="button" id="searchButton" class="btn btn-primary">Find</button>
-                </div>
-            </form>
-
-            <!-- ---------------------------------------------------------------------------------------------------->
-
             <label for="res_time"></label>
             <div>
                 <input type="text" class="form-control box" name="res_time" id="res_time" placeholder="Čas"

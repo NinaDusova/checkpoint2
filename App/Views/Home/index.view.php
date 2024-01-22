@@ -1,3 +1,7 @@
+<?php
+/** @var \App\Core\LinkGenerator $link */
+?>
+
 <!-- <div class="container-fluid">
     <div class="row">
         <div class="col mt-5">
@@ -39,7 +43,11 @@
             <img src="/public/images/main/front2.jpg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
                 <h5>PINK ESCAPE ROOM</h5>
-                <button class="button-pink">ZISTI VIAC</button>
+                <div style="display: flex; justify-content: center; align-items: center; height: 10vh; margin: 0;">
+                    <a href="<?= $link->url("reservation.reservationn") ?> " style="text-decoration: none;">
+                        <button style="background-color: hotpink; color: white; padding: 10px 20px; font-size: 16px; border: none; cursor: pointer;">ZAREZERVOVAŤ</button>
+                    </a>
+                </div>
                 <p></p>
             </div>
         </div>

@@ -64,4 +64,19 @@ class HomeController extends AControllerBase
     {
         return $this->html();
     }
+
+    public function miestnostiplague() : Response
+    {
+        return $this->html();
+    }
+
+    public function miestnostihello() : Response
+    {
+        return $this->html();
+    }
+
+    public function miestnosticake() : Response
+    {
+        return $this->html();
+    }
 }

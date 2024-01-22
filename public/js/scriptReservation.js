@@ -22,13 +22,17 @@ class ReservationCalendar {
         this.resDateInput.value = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
 
         this.displaySelectedDate(day, month, year);
+
+        if (typeof window.searchDatabase === 'function') {
+            window.searchDatabase();
+        }
     }
 
     unhighlightCell(cell) {
         cell.style.backgroundColor = '#DDBDB7';
     }
 
-    displaySelectedDay(day) {
+    /*displaySelectedDay(day) {
         const selectedDayElement = document.getElementById('selectedDay');
         selectedDayElement.textContent = `Dostupné miesta dňa: ${day}`;
     }
@@ -41,7 +45,7 @@ class ReservationCalendar {
     displaySelectedMonth(month) {
         const selectedMonthElement = document.getElementById('selectedMonth');
         selectedMonthElement.textContent = `Dostupné miesta roku: ${month}`;
-    }
+    }*/
 
     displaySelectedDate(day, month, year) {
         const selectedDateElement = document.getElementById('selectedDate');

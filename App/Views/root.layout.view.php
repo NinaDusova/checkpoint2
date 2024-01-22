@@ -15,7 +15,7 @@
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="/public/css/style.css">
     <script src="/public/js/script.js"></script>
     <!--/head>
 <body>
@@ -67,8 +67,15 @@
                 </li>
             </ul>
             <ul class="navbar-nav mb-2 mb-sm-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="<?= $link->url("") ?>"><i class=""></i>Naše miestnosti</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Naše miestnosti
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="<?= $link->url("home.miestnostiplague") ?>" data-target="plague">Plague</a></li>
+                        <li><a class="dropdown-item" href="<?= $link->url("home.miestnosticake") ?>" data-target="cake">Cake</a></li>
+                        <li><a class="dropdown-item" href="<?= $link->url("home.miestnostihello") ?>" data-target="hello-kitty-murder">Hello Kitty murder</a></li>
+                    </ul>
                 </li>
             </ul>
             <ul class="navbar-nav mb-2 mb-sm-0">
@@ -110,3 +117,4 @@
 </div>
 </body>
 </html>
+

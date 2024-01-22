@@ -24,51 +24,6 @@ class ReservationController extends AControllerBase
         return $this->html();
     }
 
-    /*public function search(): Response
-    {
-        //$data = $this->request()->getRawBodyJSON();
-        //$param = "%" . $this->request()->getValue('res_date') . "%";
-        //$param =$this->request()->getValue('res_date') . "%";
-        //$reservations = Reservation::getAll('res_date LIKE ?', [$param]);
-       /* return $this->html(
-            [
-                'reservations' => $reservations
-            ]
-        );*/
-       // return $this->json(['reservations' => $reservations]);
-       //return $this->json(['reservations' => $param]);
-
-
-
-
-        //-----------------------------------------
-     /*   $data = $this->request()->getRawBodyJSON();
-        //$param = "%" . json_encode($data) . "%";
-        //$decodedData = json_decode($data, true);
-        //$value = $decodedData['res_date'][0];
-
-        //$reservations = Reservation::getAll('res_name LIKE ?', [$value]);
-        $reservations = Reservation::getAll();
-
-       /* if (isset($data['res_date'])) {
-            // Concatenate '%' to the 'res_date' value
-            $data['res_date'] .= "%";
-
-            // Return the modified JSON data
-            return $this->json($data);
-        } else {
-            // Handle the case where 'res_date' is not present in the request data
-            return $this->json(['error' => 'res_date is missing in the request data'], 400);
-        }*/
-
-        //return $this->json($reservations);
-       // return $this->json($reservations);
-       // return $this->json(['param' => $param]);
-       // return $this->json((['reservations' => $reservations]));
-       // return $this->json($reservations);
-     /*   return $this->json($data);
-    }*/
-
     public function search(): Response
     {
         $searchValue = $this->request()->getValue('search');
@@ -148,19 +103,25 @@ class ReservationController extends AControllerBase
         $errors = [];
         if ($this->request()->getValue('res_phone') == null) {
             $errors[] = "Telefónne číslo je povinné!";
-        }/* else if (!(strlen($this->request()->getValue('res_phone')) == 10 || strlen($this->request()->getValue('res_phone')) == 12)) {
-            $errors[] = "Telefónne číslo je v nesprávnom tvare!";
-        }*/
+        } else {
+            $phoneLength = strlen($this->request()->getValue('res_phone'));
+            if ($phoneLength < 10 || $phoneLength > 12) {
+                $errors[] = "Telefónne číslo je v nesprávnom tvare!";
+            }
+        }
         if ($this->request()->getValue('res_date') == null) {
-            $errors[] = "Dátum je povinný!";
+            $errors[] = "Nevybrali ste si dátum!";
         }
         if ($this->request()->getValue('res_time') == null) {
-            $errors[] = "Čas je povinný!";
+            $errors[] = "Nevybrali ste si čas!";
         }
         if ($this->request()->getValue('res_name') == "") {
             $errors[] = "Meno je povinné!";
         }
-        if ($this->request()->getValue('res_name') == "" && !str_contains($this->request()->getValue('res_email'), '@')) {
+        $email = $this->request()->getValue('res_email');
+        if ($email == "") {
+            $errors[] = "Email je povinný!";
+        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors[] = "Nesprávny tvar emailu!";
         }
         return $errors;
