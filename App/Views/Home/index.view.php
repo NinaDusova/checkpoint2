@@ -2,38 +2,6 @@
 /** @var \App\Core\LinkGenerator $link */
 ?>
 
-<!-- <div class="container-fluid">
-    <div class="row">
-        <div class="col mt-5">
-            <div class="text-center">
-                <h2>Vaííčko MVC FW</h2>
-                <img src="public/images/vaiicko_logo.png">
-                <p>
-                    Gratulujeme vám, úspešne sa vám podarilo nainštalovať a spustiť framework
-                    <strong>Vaííčko</strong> < ?= \App\Config\Configuration::FW_VERSION ?>!<br>
-                    Dúfame, že sa Vám pomocou tohto frameworku vytvoríte nejakú skvelú aplikáciu.<br>
-                </p>
-                <p>
-                    Tento jednoduchý framework bol vytvorený pre lepšie pochopenie architektúry MVC.<br>
-                    Je určený pre študentov predmetu <em>vývoj aplikácií pre internet a intranet</em>, ale nielen im.
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="row mt-3">
-        <div class="col text-center">
-            <h4>Autori</h4>
-            <div>
-                <a href="mailto:Patrik.Hrkut@fri.uniza.sk">doc. Ing. Patrik Hrkút, PhD.</a><br>
-                <a href="mailto:Michal.Duracik@fri.uniza.sk">Ing. Michal Ďuračík, PhD.</a><br>
-                <a href="mailto:Matej.Mesko@fri.uniza.sk">Ing. Matej Meško, PhD.</a><br><br>
-                &copy; 2020-< ?= date('Y') ?> Žilinská univerzita v Žiline, Fakulta riadenia a informatiky, Katedra
-                softvérových technológií
-            </div>
-        </div>
-    </div>
-</div> -->
-
 <!-- carousel -------------------------------------------------->
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
@@ -82,7 +50,7 @@
         </div>
         <h4>Plague</h4>
         <h2>Vyriešte záhadu choroby ktorá zapríčinila zhubu po celom svete</h2>
-        <a href="#" class="icon-link">
+        <a href="<?= $link->url("home.miestnostiplague") ?>" class="icon-link">
             Zisti viac
             <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"></use></svg>
         </a>
@@ -93,7 +61,7 @@
         </div>
         <h4>Koláčová smrť</h4>
         <h2>Koláč ,ktorý otrávil celú rodinu ?!</h2>
-        <a href="#" class="icon-link">
+        <a href="<?= $link->url("home.miestnosticake") ?>" class="icon-link">
             Zisti viac
             <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"></use></svg>
         </a>
@@ -104,7 +72,7 @@
         </div>
         <h4>Vražda Hello Kitty</h4>
         <h2>Máš na to aby si vyriešil tento prípad detektív?</h2>
-        <a href="#" class="icon-link">
+        <a href="<?= $link->url("home.miestnostihello") ?>" class="icon-link">
             Zisti viac
             <svg class="bi" width="1em" height="1em" ><use xlink:href="#chevron-right"></use></svg>
         </a>
