@@ -1,5 +1,6 @@
 <?php
 /** @var \App\Core\LinkGenerator $link */
+/** @var Array $data */
 ?>
 
 <?php if (isset($data['errors']) && count($data['errors']) > 0): ?>
@@ -12,12 +13,17 @@
 
     <label for="res_date" class="form-label">Dátum</label>
     <div class="input-group mb-3 has-validation">
-        <input type="text" class="form-control" name="res_date" id="res_date" value="<?= @$data['reservation']?->getResDate() ?>">
+        <input type="date" class="form-control" name="res_date" id="res_date" value="<?= @$data['reservation']?->getResDate() ?>">
+    </div>
+
+    <label for="res_time" class="form-label">Čas</label>
+    <div class="input-group has-validation mb-3">
+        <input type="time" class="form-control" name="res_time" id="res_time" value="<?= @$data['res_time']?->getTime() ?>">
     </div>
 
     <label for="res_name" class="form-label">Meno</label>
     <div class="input-group has-validation mb-3 ">
-        <textarea class="form-control" aria-label="With textarea" name="res_name" id="post-text"><?= @$data['res_name']?->getName() ?></textarea>
+        <input type="text" class="form-control" name="res_time" id="res_time" value="<?= @$data['res_name']?->getName() ?>">
     </div>
 
     <label for="res_email" class="form-label">Email</label>
@@ -32,3 +38,9 @@
 
     <button type="submit" class="btn btn-primary">Uložiť</button>
 </form>
+
+<script>
+    var resNameValue = document.getElementById('res_name').value;
+    console.log(resNameValue);
+</script>
+
