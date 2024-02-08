@@ -7,6 +7,7 @@ use App\Core\Model;
 class Kupon extends Model
 {
     protected ?int $id = null;
+    protected string $kod;
     protected string $email;
     protected string $game;
 
@@ -39,4 +40,15 @@ class Kupon extends Model
     {
         $this->game = $game;
     }
+
+    public function getKod(): string
+    {
+        return $this->kod;
+    }
+
+    public function setKod(string $kod): void
+    {
+        $this->kod = $kod;
+    }
+
 }

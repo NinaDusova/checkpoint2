@@ -40,6 +40,7 @@ class KuponController extends AControllerBase
                 ], 'index'
             );
         } else {
+            $kupon->setKod($this->request()->getValue('kod'));
             $kupon->setEmail($this->request()->getValue('email'));
             $kupon->setGame($this->request()->getValue('game'));
             $kupon->save();

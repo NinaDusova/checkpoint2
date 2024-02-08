@@ -16,6 +16,9 @@
 
 <div class="kupon" >
     <form method="post" action="<?= $link->url('kupon.save') ?>" enctype="multipart/form-data">
+
+        <input type="hidden" id="kod" name="kod" placeholder="XXXX-XXXX-XXXX" value="<?= @$data['game']?->getGame() ?>">
+
         <label for="moznost">Vyberte možnosť miestnosti:</label>
         <select id="moznost" name="moznost">
             <option value="" selected disabled>--- Vyberte možnosť ---</option>
@@ -38,8 +41,20 @@
 </div>
 
 <script>
+        let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        let code = '';
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 4; j++) {
+                code += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            if (i < 2) {
+                code += '-';
+            }
+        }
+        document.getElementById('kod').value = code;
+
+
     document.getElementById('moznost').addEventListener('change', function() {
-        var selectedGame = this.value;
-        document.getElementById('selectedGame').value = selectedGame;
+        document.getElementById('selectedGame').value = this.value;
     });
 </script>
