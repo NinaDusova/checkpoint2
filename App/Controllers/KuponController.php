@@ -24,6 +24,15 @@ class KuponController extends AControllerBase
         return $this->html();
     }
 
+    public function edit(): Response
+    {
+        $id = (int) $this->request()->getValue('id');
+        $kupon = Kupon::getOne($id);
+        $kupon->setPouzity('uplatneny');
+        $kupon->save();
+        return new RedirectResponse($this->url('admin.potvrdenie'));
+    }
+
     public function save(): Response
     {
         $id = (int)$this->request()->getValue('id');

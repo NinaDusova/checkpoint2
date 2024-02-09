@@ -79,4 +79,9 @@ class HomeController extends AControllerBase
     {
         return $this->html();
     }
+
+    public function vysledky(): Response
+    {
+        return $this->html();
+    }
 }

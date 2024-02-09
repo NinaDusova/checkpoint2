@@ -89,10 +89,21 @@
         var result = window.confirm("Naozaj chcete uplatniť tento kupon?");
 
         if (result) {
+            sessionStorage.setItem('confirmed', 'true');
             window.location.href = "<?= $link->url('kupon.edit') ?>?id=" + kuponId;
         } else {
+            sessionStorage.setItem('confirmed', 'false');
         }
-
-
     }
+
+    window.onload = function() {
+        var confirmed = sessionStorage.getItem('confirmed');
+
+        if (confirmed === 'true') {
+            window.setTimeout(function() {
+                window.alert("uplatnene");
+                sessionStorage.setItem('confirmed', 'false');
+            }, 100);
+        }
+    };
 </script>

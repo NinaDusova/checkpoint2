@@ -110,6 +110,12 @@
                         <a class="nav-link active" aria-current="page" href="<?= $link->url("kupon.index") ?>"><i class=""></i>Kupóny</a>
                     </li>
                 </ul>
+
+                <ul class="navbar-nav mb-2 mb-sm-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="<?= $link->url("home.vysledky") ?>"><i class=""></i>Výsledky</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
