@@ -39,9 +39,11 @@ class AdminController extends AControllerBase
 
     public function potvrdenie(): Response
     {
+        $param = "%" . $this->request()->getValue('search') . "%";
+        $kupons = Kupon::getAll('kod LIKE ?', [$param]);
         return $this->html(
             [
-            'kupons' => Kupon::getAll()
+                'kupons' => $kupons
             ]
         );
     }

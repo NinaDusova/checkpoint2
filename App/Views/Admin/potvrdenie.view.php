@@ -45,10 +45,10 @@
     }
 </style>
 
-<form action="<?= $link->url("admin.potvrdenie") ?>" method="GET">
+<form action="<?= $link->url("admin.potvrdenie") ?>" method="POST">
     <label for="search">Vyhľadať:</label>
     <input type="text" id="search" name="search" placeholder="Zadajte hľadaný výraz">
-    <a href="<?= $link->url('admin.potvrdenie')?>" class="btn btn-primary">Najdi</a>
+    <button type="submit" class="btn btn-primary">Najdi</button>
 </form>
 
 <table class="table" style="width: 100%; background-color: #d3d3d3;">
@@ -72,7 +72,7 @@
             <td><?= $kupon->getKod() ?></td>
             <td>
                 <?php if ($kupon->getPouzity() == 'neuplatneny'): ?>
-                    <a href="<?= $link->url('kupon.edit', ['id' => $kupon->getId()]) ?>" class="btn btn-primary">Uplatniť</a>
+                    <a href="<?= $link->url('kupon.edit', ['id' => $kupon->getId()]) ?>" class="btn btn-primary" onclick="confirmUplatnit(<?= $kupon->getId() ?>)">Uplatniť</a>
                 <?php else: ?>
                     Uplatnený
                 <?php endif; ?>
@@ -81,3 +81,18 @@
     <?php endforeach; ?>
     </tbody>
 </table>
+
+
+
+<script>
+    function confirmUplatnit(kuponId) {
+        var result = window.confirm("Naozaj chcete uplatniť tento kupon?");
+
+        if (result) {
+            window.location.href = "<?= $link->url('kupon.edit') ?>?id=" + kuponId;
+        } else {
+        }
+
+
+    }
+</script>
