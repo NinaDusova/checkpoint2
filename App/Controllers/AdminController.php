@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Core\AControllerBase;
 use App\Core\Responses\Response;
 use App\Models\Reservation;
+use App\Models\Kupon;
 
 /**
  * Class HomeController
@@ -32,6 +33,15 @@ class AdminController extends AControllerBase
         return $this->html(
             [
                 'reservations' => Reservation::getAll(orderBy: '`res_date` asc')
+            ]
+        );
+    }
+
+    public function potvrdenie(): Response
+    {
+        return $this->html(
+            [
+            'kupons' => Kupon::getAll()
             ]
         );
     }

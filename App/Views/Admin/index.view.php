@@ -25,6 +25,11 @@
             </div>
         </div>
     </div>
+
+
+    <a href="<?= $link->url("admin.potvrdenie") ?> " style="text-decoration: none;">
+        <button style="background-color: darksalmon; color: white; padding: 10px 20px; font-size: 16px; border: none; cursor: pointer;">KUPÓNY</button>
+    </a>
 </div>
 
 <table class="table" style="width: 100%; background-color: #d3d3d3;">

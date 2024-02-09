@@ -10,6 +10,9 @@ class Kupon extends Model
     protected string $kod;
     protected string $email;
     protected string $game;
+    protected string $datum;
+    protected string $zakaznik;
+    protected string $pouzity;
 
     public function getId(): ?int
     {
@@ -51,4 +54,33 @@ class Kupon extends Model
         $this->kod = $kod;
     }
 
+    public function getDatum(): string
+    {
+        return $this->datum;
+    }
+
+    public function setDatum(string $datum): void
+    {
+        $this->datum = $datum;
+    }
+
+    public function getZakaznik(): string
+    {
+        return $this->zakaznik;
+    }
+
+    public function setZakaznik(string $zakaznik): void
+    {
+        $this->zakaznik = $zakaznik;
+    }
+
+    public function getPouzity(): string
+    {
+        return $this->pouzity;
+    }
+
+    public function setPouzity(string $pouzity): void
+    {
+        $this->pouzity = $pouzity;
+    }
 }

@@ -43,6 +43,9 @@ class KuponController extends AControllerBase
             $kupon->setKod($this->request()->getValue('kod'));
             $kupon->setEmail($this->request()->getValue('email'));
             $kupon->setGame($this->request()->getValue('game'));
+            $kupon->setDatum($this->request()->getValue('datum'));
+            $kupon->setZakaznik($this->request()->getValue('zakaznik'));
+            $kupon->setPouzity($this->request()->getValue('pouzity'));
             $kupon->save();
             return new RedirectResponse($this->url('home.index'));
         }

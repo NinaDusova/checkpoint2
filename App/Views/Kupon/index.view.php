@@ -17,7 +17,7 @@
 <div class="kupon" >
     <form method="post" action="<?= $link->url('kupon.save') ?>" enctype="multipart/form-data">
 
-        <input type="hidden" id="kod" name="kod" placeholder="XXXX-XXXX-XXXX" value="<?= @$data['game']?->getGame() ?>">
+        <input type="hidden" id="kod" name="kod" placeholder="XXXX-XXXX-XXXX" value="<?= @$data['kod']?->getKod() ?>">
 
         <label for="moznost">Vyberte možnosť miestnosti:</label>
         <select id="moznost" name="moznost">
@@ -29,7 +29,14 @@
         <input type="hidden" id="selectedGame" name="game" value="<?= @$data['game']?->getGame() ?>">
 
         <label for="email">Váš email:</label>
-        <input type="email" id="email" name="email" value="<?= @$data['reservation']?->getEmail()?>" required>
+        <input type="email" id="email" name="email" value="<?= @$data['email']?->getEmail()?>" required>
+
+        <input type="hidden" id="datum" name="datum" value="<?= @$data['datum']?->getDatum()?>">
+
+        <label for="zakaznik">Váše meno a priezvisko:</label>
+        <input type="text" id="zakaznik" name="zakaznik" value="<?= @$data['zakaznik']?->getZakaznik()?>" required>
+
+        <input type="hidden" id="pouzity" name="pouzity" value="<?= @$data['pouzity']?->getPouzity()?>">
 
         <label for="kreditna_karta">Údaje karty:</label>
         <input type="text" id="kreditna_karta" name="kreditna_karta" placeholder="XXXX-XXXX-XXXX-XXXX" required>
@@ -57,4 +64,16 @@
     document.getElementById('moznost').addEventListener('change', function() {
         document.getElementById('selectedGame').value = this.value;
     });
+
+    let currentDate = new Date();
+
+    let day = currentDate.getDate();
+    let month = currentDate.getMonth() + 1;
+    let year = currentDate.getFullYear();
+
+    let formattedDate =(day < 10 ? '0' + day : day) + '-' + (month < 10 ? '0' + month : month) + '-' +  year ;
+
+    document.getElementById('datum').value = formattedDate;
+
+    document.getElementById('pouzity').value = 'neuplatneny';
 </script>
