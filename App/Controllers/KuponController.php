@@ -56,7 +56,7 @@ class KuponController extends AControllerBase
             $kupon->setZakaznik($this->request()->getValue('zakaznik'));
             $kupon->setPouzity($this->request()->getValue('pouzity'));
             $kupon->save();
-            return new RedirectResponse($this->url('home.index'));
+            return new RedirectResponse($this->url('kupon.index'));
         }
     }
 
