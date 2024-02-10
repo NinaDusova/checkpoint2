@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Core\AControllerBase;
 use App\Core\Responses\Response;
 use App\Models\Reservation;
+use App\Models\Result;
 
 /**
  * Class HomeController
@@ -55,7 +56,7 @@ class HomeController extends AControllerBase
     {
         return $this->html(
             [
-                'reservations' => Reservation::getAll()
+                'reservations' => Reservation::getAll(orderBy: '`time` asc')
             ]
         );
     }
@@ -82,6 +83,10 @@ class HomeController extends AControllerBase
 
     public function vysledky(): Response
     {
-        return $this->html();
+        return $this->html(
+            [
+                'results' => Result::getAll()
+            ]
+        );
     }
 }

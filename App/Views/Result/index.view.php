@@ -3,6 +3,7 @@
 /** @var Array $data */
 ?>
 
+<link rel="stylesheet" href="/public/css/style.kupon.css">
 
 <?php if (isset($data['errors']) && count($data['errors']) > 0): ?>
     <?php foreach ($data['errors'] as $error): ?>
@@ -28,10 +29,10 @@
         </select>
         <input type="hidden" id="selectedGame" name="game" value="<?= @$data['game']?->getGame() ?>">
 
-        <label for="res_date" class="form-label">Dátum</label>
+        <label for="date" class="form-label"></label>
         <div class="input-group mb-3 has-validation">
             <label for="date">Vyberte dátum:</label>
-            <input type="date" class="form-control" name="date" id="date" value="<?= @$data['date']?->getResDate() ?>">
+            <input type="date" class="form-control" name="date" id="date" value="<?= @$data['date']?->getDate() ?>">
         </div>
 
         <input type="submit" value="Pridať">
