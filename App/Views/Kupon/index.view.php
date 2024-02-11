@@ -19,6 +19,8 @@
 
         <input type="hidden" id="kod" name="kod" placeholder="XXXX-XXXX-XXXX" value="<?= @$data['kod']?->getKod() ?>">
 
+        <input type="hidden" id="reservation_id" name="reservation_id"" value="<?= @$data['kod']?->getKod() ?>">
+
         <label for="moznost">Vyberte možnosť miestnosti:</label>
         <select id="moznost" name="moznost">
             <option value="" selected disabled>--- Vyberte možnosť ---</option>

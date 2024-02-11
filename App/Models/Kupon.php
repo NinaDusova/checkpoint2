@@ -7,6 +7,8 @@ use App\Core\Model;
 class Kupon extends Model
 {
     protected ?int $id = null;
+
+    protected int $reservation_id;
     protected string $kod;
     protected string $email;
     protected string $game;
@@ -83,4 +85,16 @@ class Kupon extends Model
     {
         $this->pouzity = $pouzity;
     }
+
+    public function getReservationId(): int
+    {
+        return $this->reservation_id;
+    }
+
+    public function setReservationId(int $reservation_id): void
+    {
+        $this->reservation_id = $reservation_id;
+    }
+
+
 }

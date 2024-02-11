@@ -20,7 +20,6 @@ class KuponController extends AControllerBase
      */
     public function index(): Response
     {
-        // TODO: Implement index() method.
         return $this->html();
     }
 
@@ -37,6 +36,7 @@ class KuponController extends AControllerBase
     {
         $id = (int)$this->request()->getValue('id');
         $kupon = new Kupon();
+        $kupon->setReservationId($this->request()->getValue('reservation_id'));
         $kupon->setEmail($this->request()->getValue('email'));
         $kupon->setGame($this->request()->getValue('game'));
 
