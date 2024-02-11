@@ -1,5 +1,6 @@
 <?php
 /** @var \App\Core\LinkGenerator $link */
+/** @var Array $data */
 ?>
 
 <link rel="stylesheet" href="/public/css/style.kupon.css">
@@ -18,8 +19,6 @@
     <form method="post" action="<?= $link->url('kupon.save') ?>" enctype="multipart/form-data">
 
         <input type="hidden" id="kod" name="kod" placeholder="XXXX-XXXX-XXXX" value="<?= @$data['kod']?->getKod() ?>">
-
-        <input type="hidden" id="reservation_id" name="reservation_id"" value="<?= @$data['kod']?->getKod() ?>">
 
         <label for="moznost">Vyberte možnosť miestnosti:</label>
         <select id="moznost" name="moznost">
@@ -45,11 +44,14 @@
         <label for="cvv">CVV:</label>
         <input type="text" id="cvv" name="cvv" placeholder="XXX" required>
 
+        <input type="hidden" id="reservation_id" name="reservation_id" value="<?= @$data['reservation_id']?->getReservationId() ?>">
+
         <input type="submit" value="Odoslať objednávku">
     </form>
 </div>
 
 <script>
+
         let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
         let code = '';
         for (let i = 0; i < 3; i++) {

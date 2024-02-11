@@ -8,6 +8,7 @@ use App\Core\HTTPException;
 use App\Core\Responses\RedirectResponse;
 use App\Core\Responses\Response;
 use App\Models\Kupon;
+use App\Models\Reservation;
 
 //use App\Core\AControllerBase;
 //use App\Core\Responses\Response;
@@ -20,7 +21,11 @@ class KuponController extends AControllerBase
      */
     public function index(): Response
     {
-        return $this->html();
+        return $this->html(
+            [
+                'reservations' => Reservation::getAll()
+            ]
+        );
     }
 
     public function edit(): Response
@@ -36,9 +41,9 @@ class KuponController extends AControllerBase
     {
         $id = (int)$this->request()->getValue('id');
         $kupon = new Kupon();
-        $kupon->setReservationId($this->request()->getValue('reservation_id'));
         $kupon->setEmail($this->request()->getValue('email'));
         $kupon->setGame($this->request()->getValue('game'));
+        $kupon->setReservationId($this->getIdRes($this->request()->getValue('email')));
 
         $formErrors = $this->formErrors();
         if (count($formErrors) > 0) {
@@ -55,6 +60,7 @@ class KuponController extends AControllerBase
             $kupon->setDatum($this->request()->getValue('datum'));
             $kupon->setZakaznik($this->request()->getValue('zakaznik'));
             $kupon->setPouzity($this->request()->getValue('pouzity'));
+            $kupon->setReservationId($this->getIdRes($this->request()->getValue('email')));
             $kupon->save();
             return new RedirectResponse($this->url('home.potvrdenie'));
         }
@@ -88,5 +94,15 @@ class KuponController extends AControllerBase
         }
 
         return $errors;
+    }
+
+
+    private function getIdRes(string $email): int {
+        foreach (Reservation::getAll() as $reservation) {
+            if ($reservation->getResEmail() === $email) {
+                return $reservation->getId();
+            }
+        }
+        return 0;
     }
 }
