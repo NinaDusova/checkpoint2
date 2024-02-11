@@ -83,7 +83,7 @@ class ReservationController extends AControllerBase
            // return $this->redirect($this->url('admin.index'));
             $auth = new SimpleAuthenticator();
             if ($auth->isLogged()) {
-                return new RedirectResponse($this->url('admin.index'));
+                return new RedirectResponse($this->url('home.potvrdenie'));
             } else {
                 return new RedirectResponse($this->url('home.potvrdenie'));
             }

@@ -23,7 +23,7 @@
 
     <label for="res_name" class="form-label">Meno</label>
     <div class="input-group has-validation mb-3 ">
-        <input type="text" class="form-control" name="res_time" id="res_time" value="<?= @$data['res_name']?->getName() ?>">
+        <input type="text" class="form-control" name="res_name" id="res_name" value="<?= @$data['res_name']?->getName() ?>">
     </div>
 
     <label for="res_email" class="form-label">Email</label>
@@ -33,14 +33,10 @@
 
     <label for="res_phone" class="form-label">Phone number</label>
     <div class="input-group has-validation mb-3 ">
-        <textarea class="form-control" aria-label="With textarea" name="res_phone" id="res_phone"><?= @$data['res_phone']?->getResEmail() ?></textarea>
+        <textarea class="form-control" aria-label="With textarea" name="res_phone" id="res_phone"><?= @$data['res_phone']?->getResPhone() ?></textarea>
     </div>
 
     <button type="submit" class="btn btn-primary">Uložiť</button>
 </form>
 
-<script>
-    var resNameValue = document.getElementById('res_name').value;
-    console.log(resNameValue);
-</script>
 
