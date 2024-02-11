@@ -89,4 +89,9 @@ class HomeController extends AControllerBase
             ]
         );
     }
+
+    public function potvrdenie():Response
+    {
+        return $this->html();
+    }
 }
