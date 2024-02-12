@@ -38,6 +38,12 @@
     </a>
 
     <h5></h5>
+
+    <a href="<?= $link->url("result.okno") ?> " style="text-decoration: none;">
+        <button style="background-color: darksalmon; color: white; padding: 10px 20px; font-size: 16px; border: none; cursor: pointer;">Uprav výsledky</button>
+    </a>
+
+    <h5></h5>
 </div>
 
 <table class="table" style="width: 100%; background-color: #d3d3d3;">

@@ -3,13 +3,13 @@
 namespace App\Controllers;
 
 use App\Core\AControllerBase;
+use App\Core\HTTPException;
 use App\Core\Responses\RedirectResponse;
 use App\Core\Responses\Response;
 use App\Models\Result;
 
 class ResultController extends AControllerBase
 {
-
     /**
      * @inheritDoc
      */
@@ -18,10 +18,50 @@ class ResultController extends AControllerBase
         return $this->html();
     }
 
+    public function okno(): Response
+    {
+        return $this->html(
+            [
+                'results' => Result::getAll()
+            ]
+        );
+    }
+
+    public function edit(): Response
+    {
+        $id = (int) $this->request()->getValue('id');
+        $result = Result::getOne($id);
+
+        if (is_null($result)) {
+            throw new HTTPException(404);
+        }
+
+        return $this->html(
+            [
+                'result' => $result
+            ]
+        );
+    }
+
+    public function delete(): Response
+    {
+        $id = $this->request()->getValue('id');
+        $result = Result::getOne($id);
+        $result->delete();
+
+        return $this->redirect($this->url('result.okno'));
+    }
+
     public function save(): Response
     {
         $id = (int)$this->request()->getValue('id');
-        $result = new Result();
+
+        if ($id > 0) {
+            $result = Result::getOne($id);
+        } else {
+            $result = new Result();
+        }
+
         $result->setName($this->request()->getValue('name'));
         $result->setTime($this->request()->getValue('time'));
         $result->setGame($this->request()->getValue('game'));

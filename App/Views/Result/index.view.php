@@ -14,6 +14,7 @@
 
 <div class="kupon" >
     <form method="post" action="<?= $link->url('result.save') ?>" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="<?= @$data['result']?->getId() ?>">
         <label for="name">Zadajte meno:</label>
         <input type="text" id="name" name="name" value="<?= @$data['name']?->getName()?>" required>
 
